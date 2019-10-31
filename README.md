@@ -1,7 +1,7 @@
 # Docker time2backup server
 
 # Build time2backup server
-1. Download the latest version of time2backup server.
+1. Download the latest version of [time2backup server](https://github.com/time2backup/server/releases).
 2. Move the sources folder `time2backup-server` in the current directory.
 
 # Server configuration
