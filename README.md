@@ -3,10 +3,10 @@
 # Build time2backup server
 1. Download the latest version of [time2backup server](https://github.com/time2backup/server/releases).
 2. Move the sources folder `time2backup-server` in the current directory.
-3. Copy the `docker-compose.example.yml` to `docker-compose.yml`
-4. Build the docker image
-   - Using docker-compose: `docker-compose build`
-   - Using docker command: `docker build -t time2backup/t2bserver .`
+3. Copy `docker-compose.example.yml` to `docker-compose.yml`
+4. Build docker image
+   - using docker-compose: `docker-compose build`
+   - using docker command: `docker build -t time2backup/t2bserver .`
 
 # Server configuration
 1. Create a file `config/ssh_keys` and put your clients SSH public keys inside
@@ -38,10 +38,10 @@ t2bserver_pwd = "<USER>:<PASSWORD>"
 
 # Advanced server configuration
 You can change some advanced server configuration:
-- To change backup/config paths, ssh port or restart behaviour, edit `docker-compose.yml` file. You have to reinstall the server to make your changes work (see below).
+- To change backup/config paths, ssh port or restart behaviour, edit `docker-compose.yml` file. You have to re-run the server to make your changes work (see below).
 - To set debug mode, sudo mode or other, edit `config/time2backup-server.conf` file. You have to restart the server to make your changes work (see below).
 
-# Install and run time2backup server
+# Run time2backup server
 - Using docker-compose: `docker-compose up -d`
 - Using docker command: `docker run -d --env-file config.env --restart unless-stopped --name t2bserver -p 9922:22 -v /path/to/backups:/backups -v /path/to/config:/config time2backup/t2bserver`
 
@@ -49,7 +49,7 @@ You can change some advanced server configuration:
 - Using docker-compose: `docker-compose start|stop|restart`
 - Using docker command: `docker start|stop|restart t2bserver`
 
-# Uninstall time2backup server
+# Remove time2backup server
 - Using docker-compose: `docker-compose down`
 - Using docker command: `docker rm -f t2bserver`
 

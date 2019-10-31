@@ -37,6 +37,15 @@ if [ -f /config/time2backup-server.conf ] ; then
 	done
 fi
 
+# check files ownership: backup destination
+mkdir -p /backups
+chown t2b /backups
+
+# check files ownership: time2backup server files
+touch /time2backup-server/.access /time2backup-server/server.log
+chown root:t2b /time2backup-server/.access /time2backup-server/server.log
+chmod 660 /time2backup-server/.access /time2backup-server/server.log
+
 # create SSH authorized keys file
 mkdir -p /home/t2b/.ssh
 touch /home/t2b/.ssh/authorized_keys
@@ -52,12 +61,6 @@ fi
 chown -R t2b:t2b /home/t2b
 chmod 700 /home/t2b/.ssh
 chmod 400 /home/t2b/.ssh/authorized_keys
-
-# check files ownership: time2backup server files
-chown t2b /time2backup-server/backups
-touch /time2backup-server/.access /time2backup-server/server.log
-chown root:t2b /time2backup-server/.access /time2backup-server/server.log
-chmod 660 /time2backup-server/.access /time2backup-server/server.log
 
 # run command (sshd by default)
 exec "$@"
