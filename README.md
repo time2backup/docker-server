@@ -3,7 +3,8 @@
 # Build time2backup server
 1. Download the latest version of [time2backup server](https://github.com/time2backup/server/releases).
 2. Move the sources folder `time2backup-server` in the current directory.
-3. Build the docker image
+3. Copy the `docker-compose.example.yml` to `docker-compose.yml`
+4. Build the docker image
    - Using docker-compose: `docker-compose build`
    - Using docker command: `docker build -t time2backup/t2bserver .`
 
