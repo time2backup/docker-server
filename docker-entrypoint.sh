@@ -48,11 +48,13 @@ else
 	echo "WARNING: SSH keys not set"
 fi
 	
-# check files ownership
+# check files ownership: SSH authorized keys
 chown -R t2b:t2b /home/t2b
 chmod 700 /home/t2b/.ssh
 chmod 400 /home/t2b/.ssh/authorized_keys
 
+# check files ownership: time2backup server files
+chown t2b /time2backup-server/backups
 touch /time2backup-server/.access /time2backup-server/server.log
 chown root:t2b /time2backup-server/.access /time2backup-server/server.log
 chmod 660 /time2backup-server/.access /time2backup-server/server.log

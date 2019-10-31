@@ -3,6 +3,9 @@
 # Build time2backup server
 1. Download the latest version of [time2backup server](https://github.com/time2backup/server/releases).
 2. Move the sources folder `time2backup-server` in the current directory.
+3. Build the docker image
+   - Using docker-compose: `docker-compose build`
+   - Using docker command: `docker build -t time2backup/t2bserver .`
 
 # Server configuration
 1. Create a file `config/ssh_keys` and put your clients SSH public keys inside
@@ -38,13 +41,8 @@ You can change some advanced server configuration:
 - To set debug mode, sudo mode or other, edit `config/time2backup-server.conf` file. You have to restart the server to make your changes work (see below).
 
 # Install and run time2backup server
-## Using docker-compose
-1. Build image: `docker-compose build`
-2. Run server: `docker-compose up -d`
-
-## Using docker command
-1. Build image: `docker build -t time2backup/t2bserver .`
-2. Run server: `docker run -d --env-file config.env --restart unless-stopped --name t2bserver -p 9922:22 -v /path/to/backups:/backups -v /path/to/config:/config time2backup/t2bserver`
+- Using docker-compose: `docker-compose up -d`
+- Using docker command: `docker run -d --env-file config.env --restart unless-stopped --name t2bserver -p 9922:22 -v /path/to/backups:/backups -v /path/to/config:/config time2backup/t2bserver`
 
 # Start/Stop/Restart time2backup server
 - Using docker-compose: `docker-compose start|stop|restart`
