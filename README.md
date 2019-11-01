@@ -43,7 +43,7 @@ You can change some advanced server configuration:
 
 # Run time2backup server
 - Using docker-compose: `docker-compose up -d`
-- Using docker command: `docker run -d --env-file config.env --restart unless-stopped --name t2bserver -p 9922:22 -v /path/to/backups:/backups -v /path/to/config:/config time2backup/t2bserver`
+- Using docker command: `docker run -d --env-file config.env --restart unless-stopped --name t2bserver -p 9922:22 -v /path/to/backups:/backups -v /path/to/config:/config:ro time2backup/t2bserver`
 
 # Start/Stop/Restart time2backup server
 - Using docker-compose: `docker-compose start|stop|restart`

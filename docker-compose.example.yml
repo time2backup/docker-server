@@ -6,5 +6,5 @@ services:
       - '9922:22'
     volumes:
       - ./backups:/backups
-      - ./config:/config
+      - ./config:/config:ro
     restart: unless-stopped
