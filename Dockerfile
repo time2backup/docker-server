@@ -17,10 +17,11 @@ COPY time2backup-server /time2backup-server
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 # 1. Secure files
-# 2. Create time2backup-server global link
-RUN chown -R root:t2b /time2backup-server && chmod -R 750 /time2backup-server && \
-    chown root:root /docker-entrypoint.sh && chmod 700 /docker-entrypoint.sh && \
-    /time2backup-server/install.sh > /dev/null
+# 2. Install time2backup server
+# 3. Add t2b user to t2b-server group
+RUN chown root:root /docker-entrypoint.sh && chmod 700 /docker-entrypoint.sh && \
+    /time2backup-server/install.sh > /dev/null && \
+    adduser t2b t2b-server
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/usr/sbin/sshd", "-D"]

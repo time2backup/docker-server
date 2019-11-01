@@ -2,7 +2,7 @@
 set -e
 
 # reset config
-cp /time2backup-server/config/time2backup-server.default.conf /time2backup-server/config/time2backup-server.conf
+cp /time2backup-server/config/time2backup-server.example.conf /time2backup-server/config/time2backup-server.conf
 sed -i 's|^destination.*|destination = /backups|' /time2backup-server/config/time2backup-server.conf
 
 # reset sudoers
@@ -28,7 +28,7 @@ if [ -f /config/time2backup-server.conf ] ; then
 			if [ "$param" == sudo_mode ] ; then
 				if [ "$value" == true ] ; then
 					echo "t2b	ALL = NOPASSWD:/usr/bin/time2backup-server" > /etc/sudoers.d/time2backup
-					chmod 644 /etc/sudoers.d/time2backup
+					chown root /etc/sudoers.d/time2backup && chmod 600 /etc/sudoers.d/time2backup
 				fi
 			else
 				sed -i "s|^$param.*|$param = $value|" /time2backup-server/config/time2backup-server.conf
@@ -40,11 +40,6 @@ fi
 # check files ownership: backup destination
 mkdir -p /backups
 chown t2b /backups
-
-# check files ownership: time2backup server files
-touch /time2backup-server/.access /time2backup-server/server.log
-chown root:t2b /time2backup-server/.access /time2backup-server/server.log
-chmod 660 /time2backup-server/.access /time2backup-server/server.log
 
 # create SSH authorized keys file
 mkdir -p /home/t2b/.ssh
