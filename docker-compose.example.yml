@@ -1,6 +1,7 @@
 version: '3'
 services:
   t2bserver:
+    image: time2backup/server
     build: .
     ports:
       - '9922:22'
