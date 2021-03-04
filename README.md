@@ -51,12 +51,8 @@ You can change some advanced server configuration:
 - Using docker command: `docker rm -f t2bserver`
 
 # Build time2backup server (for developers)
-1. Download the latest version of [time2backup server](https://github.com/time2backup/server/releases).
-2. Move the sources folder `time2backup-server` in the current directory.
-3. Copy `docker-compose.example.yml` to `docker-compose.yml`
-4. Build docker image
-   - using docker-compose: `docker-compose build`
-   - using docker command: `docker build -t time2backup/t2bserver .`
+1. Set the branch or version in Dockerfile
+2. Run `./build.sh`
 
 ## License
 time2backup server is licensed under the MIT License. See [LICENSE.md](LICENSE.md) for the full license text.
